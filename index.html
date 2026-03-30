@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <!-- saved from url=(0058)file:///C:/Users/IT/Desktop/IRENGE%20CHRISTIAN/index.html# -->
-<html lang="fr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+<html lang="fr">
+   <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shammah Entreprise SARLU | Forage &amp; BTP RDC</title>
-    <!-- FAVICON : Logo dans l'onglet du navigateur -->
-    <link rel="icon" type="image/jpeg" href="./index_files/logo.jpeg">
-    <link rel="shortcut icon" type="image/jpeg" href="./index_files/logo.jpeg">
-    <!-- CSS -->
+    <title>Shammah Entreprise SARLU | Forage & BTP RDC</title>
+    
+    <!-- Icône de l'onglet -->
+    <link rel="icon" type="image/jpeg" href="./imag/logo.jpeg">
+
+    <!-- Bibliothèques obligatoires pour GitHub -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&amp;family=Open+Sans:wght@300;400;600&amp;display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
     <style>
         :root {
             --primary-blue: #003366; 
@@ -20,122 +22,46 @@
             --light-gray: #f8f9fa;
             --transition: all 0.4s ease;
         }
-
         body { font-family: 'Open Sans', sans-serif; color: var(--primary-blue); background: var(--pure-white); overflow-x: hidden; }
-        h1, h2, h3, .nav-link { font-family: 'Montserrat', sans-serif; text-transform: uppercase; }
-/* --- NAVIGATION --- */
-        /* Barre de menu fine mais équilibrée */
-        .navbar { 
-            background: var(--pure-white); 
-            padding: 4px 0; /* Légèrement augmenté pour l'équilibre visuel */
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
-            z-index: 1000; 
-        }
-        .navbar-brand img { 
-            height: 65px; /* Taille intermédiaire pour le logo */
-            width: auto; 
-        }
-
-        /* Taille des boutons du menu augmentée d'un cran */
-        .nav-link { 
-            font-weight: 700; 
-            font-size: 0.95rem; /* Augmenté de 0.85 à 0.95 (juste un peu) */
-            color: var(--primary-blue) !important; 
-            margin: 0 10px; /* Espacement horizontal légèrement plus aéré */
-            padding: 8px 12px !important; /* Plus de confort au clic */
-            transition: var(--transition);
-            position: relative;
-        }
-        .nav-link::after { 
-            content: ''; 
-            position: absolute; 
-            bottom: 0; 
-            left: 0; 
-            width: 0; 
-            height: 3px; 
-            background: var(--accent-blue); 
-            transition: var(--transition); 
-        }
-        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
-
-        /* Ajustement de l'espace pour le contenu des pages */
-        .page-content { 
-            display: none; 
-            padding-top: 105px; /* Un peu plus d'espace pour ne pas coller au menu */
-            animation: slideIn 0.5s ease-out; 
-        }
         
-        /* --- PAGES SYSTEM --- */
-        .page-content { display: none; padding-top: 100px; animation: slideIn 0.5s ease-out; }
-        .page-content.active { display: block; }
-        @keyframes slideIn { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
-
-        /* --- UI ELEMENTS --- */
-    .hero-section {
+        /* Correction Image de fond HERO */
+        .hero-section {
             background: linear-gradient(rgba(0,51,102,0.85), rgba(0,51,102,0.85)), 
-                        url('file:///C:/Users/IT/Desktop/IRENGE%20CHRISTIAN/imag/logo.jpeg') center/cover no-repeat;
+                        url('./imag/logo.jpeg') center/cover no-repeat;
             color: white;
-            padding: 150px 0;
+            padding: 100px 0;
             border-radius: 0 0 50px 50px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
-        .service-card { border: none; transition: var(--transition); border-bottom: 5px solid var(--primary-blue); height: 100%; background: var(--light-gray); }
-        .service-card:hover { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); background: var(--pure-white); }
-        .img-grid { height: 200px; object-fit: cover; border-radius: 10px; width: 100%; margin-bottom: 15px; }
-        .price-tag { font-size: 2.5rem; font-weight: 800; color: var(--accent-blue); }
+
+        .navbar { background: var(--pure-white); padding: 4px 0; box-shadow: 0 4px 12px rgba(0,0,0,0.1); z-index: 1000; }
+        .nav-link { font-weight: 700; font-size: 0.95rem; color: var(--primary-blue) !important; margin: 0 10px; padding: 8px 12px !important; transition: var(--transition); position: relative; }
+        .nav-link:hover, .nav-link.active { color: var(--accent-blue) !important; }
+        .page-content { display: none; padding-top: 105px; animation: slideIn 0.5s ease-out; }
+        .page-content.active { display: block; }
+        @keyframes slideIn { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
         
-        .footer-info { background: var(--primary-blue); color: white; padding: 40px 0; }
-/* Barre de réseaux sociaux flottante à gauche */
-        .social-sticky {
-            position: fixed;
-            top: 50%;
-            left: 0;
-            transform: translateY(-50%);
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-        }
-        .social-sticky a {
-            width: 45px;
-            height: 45px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-decoration: none;
-            transition: var(--transition);
-            font-size: 1.2rem;
-            margin-bottom: 2px;
-        }
-        .social-sticky .fb { background: #3b5998; }
-        .social-sticky .ln { background: #0077b5; }
-        .social-sticky .wa { background: #25d366; }
-        .social-sticky a:hover { width: 55px; padding-left: 10px; }
-
-        /* Style pour les liens du footer */
-        .social-links a {
-            transition: var(--transition);
-            display: inline-block;
-        }
-        .social-links a:hover {
-            transform: translateY(-5px);
-            color: var(--accent-blue) !important;
-        }
-
+        /* Barre réseaux sociaux gauche */
+        .social-sticky { position: fixed; top: 50%; left: 0; transform: translateY(-50%); z-index: 9999; display: flex; flex-direction: column; }
+        .social-sticky a { width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; color: white !important; text-decoration: none; transition: all 0.3s ease; font-size: 1.2rem; }
+        .social-sticky .fb { background: #1877F2; }
+        .social-sticky .ln { background: #0A66C2; }
+        .social-sticky .wa { background: #25D366; }
+        .social-sticky a:hover { width: 60px; padding-left: 10px; }
     </style>
-<style type="text/css" id="operaUserStyle"></style></head>
+</head>
 <body>
 
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-<a class="navbar-brand fw-bold" href="file:///C:/Users/IT/Desktop/IRENGE%20CHRISTIAN/index.html#" onclick="showPage(&#39;home&#39;)" style="display: flex; align-items: center;">
-    <img src="./index_files/logo.jpeg" alt="Logo Shammah" style="height: 70px; width: auto; margin-right: 15px; object-fit: contain;">
+<a class="navbar-brand fw-bold" href="#" onclick="showPage('home')" style="display: flex; align-items: center;">
+    <img src="./imag/logo.jpeg" alt="Logo" style="height: 60px; width: auto; margin-right: 15px; object-fit: contain;">
     <div style="line-height: 1.2;">
-        <span style="color: var(--primary-blue); display: block; font-size: 1.2rem;">SHAMMAH</span>
-        <span style="color: var(--accent-blue); display: block; font-size: 1rem;">ENTREPRISE</span>
+        <span style="color: var(--primary-blue); display: block; font-size: 1.1rem;">SHAMMAH</span>
+        <span style="color: var(--accent-blue); display: block; font-size: 0.9rem;">ENTREPRISE</span>
     </div>
 </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -196,15 +122,23 @@
                     
                     <!-- Premier Bloc de 3 images -->
                     <div class="carousel-item active" data-bs-interval="4000">
+    <div class="row g-2">
+        <div class="col-4">
+            <img src="./imag/logo.jpeg" class="img-fluid rounded shadow-sm" style="height: 200px; width: 100%; object-fit: cover;">
+        </div>
+        <!-- Répétez ./imag/nom-de-votre-image.jpg pour les autres -->
+    </div>
+</div>
+                    <div class="carousel-item active" data-bs-interval="4000">
                         <div class="row g-2">
                             <div class="col-4">
-                                <img src="C:\Users\IT\Desktop\IRENGE CHRISTIAN\imag\pois.jpeg" class="img-fluid rounded shadow-sm" style="height: 200px; width: 100%; object-fit: cover;" alt="Forage 1">
+                                <img src="./imag/pois.jpeg" class="img-fluid rounded shadow-sm" style="height: 200px; width: 100%; object-fit: cover;" alt="Forage 1">
                             </div>
                             <div class="col-4">
-                                <img src="C:\Users\IT\Desktop\IRENGE CHRISTIAN\imag\aze.jpeg" class="img-fluid rounded shadow-sm" style="height: 200px; width: 100%; object-fit: cover;" alt="Chantier 1">
+                                <img src="./imag/aze.jpeg" class="img-fluid rounded shadow-sm" style="height: 200px; width: 100%; object-fit: cover;" alt="Chantier 1">
                             </div>
                             <div class="col-4">
-                                <img src="C:\Users\IT\Desktop\IRENGE CHRISTIAN\imag\arte.jpeg" class="img-fluid rounded shadow-sm" style="height: 200px; width: 100%; object-fit: cover;" alt="BTP 1">
+                                <img src="./imag/arte.jpeg" class="img-fluid rounded shadow-sm" style="height: 200px; width: 100%; object-fit: cover;" alt="BTP 1">
                             </div>
                         </div>
                     </div>
@@ -213,13 +147,13 @@
                     <div class="carousel-item" data-bs-interval="4000">
                         <div class="row g-2">
                             <div class="col-4">
-                                <img src="C:\Users\IT\Desktop\IRENGE CHRISTIAN\imag\121212121.jpeg" class="img-fluid rounded shadow-sm" style="height: 200px; width: 100%; object-fit: cover;" alt="Forage 2">
+                                <img src="./imag/121212121.jpeg" class="img-fluid rounded shadow-sm" style="height: 200px; width: 100%; object-fit: cover;" alt="Forage 2">
                             </div>
                             <div class="col-4">
-                                <img src="C:\Users\IT\Desktop\IRENGE CHRISTIAN\imag\WhatsApp Image 2026-03-30 at 16.12.52.jpeg" class="img-fluid rounded shadow-sm" style="height: 200px; width: 100%; object-fit: cover;" alt="Chantier 2">
+                                <img src="./imag/WhatsApp Image 2026-03-30 at 16.12.52.jpeg" class="img-fluid rounded shadow-sm" style="height: 200px; width: 100%; object-fit: cover;" alt="Chantier 2">
                             </div>
                             <div class="col-4">
-                                <img src="C:\Users\IT\Desktop\IRENGE CHRISTIAN\imag\4.jpeg" class="img-fluid rounded shadow-sm" style="height: 200px; width: 100%; object-fit: cover;" alt="BTP 2">
+                                <img src="./imag/4.jpeg" class="img-fluid rounded shadow-sm" style="height: 200px; width: 100%; object-fit: cover;" alt="BTP 2">
                             </div>
                         </div>
                     </div>
@@ -421,36 +355,22 @@
             <p class="small">© 2026 Shammah Entreprise SARLU. Tous droits réservés.</p>
         </div>
     </footer>
-    <!-- SCRIPTS -->
+<!-- SCRIPTS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         function showPage(pageId) {
-            // Cacher toutes les pages
             const pages = document.querySelectorAll('.page-content');
             pages.forEach(p => p.classList.remove('active'));
-
-            // Afficher la page demandée
             const activePage = document.getElementById(pageId);
-            activePage.classList.add('active');
+            if(activePage) activePage.classList.add('active');
 
-            // Gérer le menu actif
             const navLinks = document.querySelectorAll('.nav-link');
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if(link.innerText.toLowerCase().includes(pageId.substring(0,3))) {
-                    link.classList.add('active');
-                }
-            });
-
-            // Fermer le menu mobile (Collapse)
+            navLinks.forEach(link => link.classList.remove('active'));
+            
             const navbarCollapse = document.getElementById('navbarNav');
-            if (navbarCollapse.classList.contains('show')) {
-                new bootstrap.Collapse(navbarCollapse).hide();
+            if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+                bootstrap.Collapse.getInstance(navbarCollapse).hide();
             }
-
-            // Remonter en haut
             window.scrollTo(0,0);
         }
     </script>
-
-</body></html>
