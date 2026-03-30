@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shammah Entreprise SARLU | Forage & BTP RDC</title>
     
-    <!-- FAVICON -->
+    <!-- FAVICON : Logo dans l'onglet du navigateur -->
     <link rel="icon" type="image/jpeg" href="imag/logo.jpeg">
+    <link rel="shortcut icon" type="image/jpeg" href="imag/logo.jpeg">
     
-    <!-- CSS EXTERNES -->
+    <!-- CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
@@ -25,47 +26,100 @@
         body { font-family: 'Open Sans', sans-serif; color: var(--primary-blue); background: var(--pure-white); overflow-x: hidden; }
         h1, h2, h3, .nav-link { font-family: 'Montserrat', sans-serif; text-transform: uppercase; }
 
-        /* NAVIGATION */
+        /* --- NAVIGATION --- */
         .navbar { 
             background: var(--pure-white); 
-            padding: 10px 0;
+            padding: 4px 0; 
             box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
             z-index: 1000; 
         }
-        .navbar-brand img { height: 60px; width: auto; transition: var(--transition); }
+        .navbar-brand img { 
+            height: 65px; 
+            width: auto; 
+        }
+
         .nav-link { 
             font-weight: 700; 
+            font-size: 0.95rem; 
             color: var(--primary-blue) !important; 
-            margin: 0 10px;
+            margin: 0 10px; 
+            padding: 8px 12px !important; 
             transition: var(--transition);
+            position: relative;
         }
-        .nav-link:hover, .nav-link.active { color: var(--accent-blue) !important; border-bottom: 2px solid var(--accent-blue); }
+        .nav-link::after { 
+            content: ''; 
+            position: absolute; 
+            bottom: 0; 
+            left: 0; 
+            width: 0; 
+            height: 3px; 
+            background: var(--accent-blue); 
+            transition: var(--transition); 
+        }
+        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
 
-        /* SYSTEME DE PAGES */
-        .page-content { display: none; padding-top: 120px; min-height: 85vh; animation: fadeIn 0.6s ease; }
+        /* --- PAGES SYSTEM --- */
+        .page-content { 
+            display: none; 
+            padding-top: 105px; 
+            animation: slideIn 0.5s ease-out; 
+        }
         .page-content.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideIn { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
 
-        /* HERO SECTION */
+        /* --- UI ELEMENTS --- */
         .hero-section {
-            background: linear-gradient(rgba(0,51,102,0.8), rgba(0,51,102,0.8)), url('imag/aze.jpeg') center/cover no-repeat;
+            background: linear-gradient(rgba(0,51,102,0.85), rgba(0,51,102,0.85)), 
+                        url('imag/logo.jpeg') center/cover no-repeat;
             color: white;
-            padding: 120px 0;
+            padding: 150px 0;
             border-radius: 0 0 50px 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
+        .service-card { border: none; transition: var(--transition); border-bottom: 5px solid var(--primary-blue); height: 100%; background: var(--light-gray); }
+        .service-card:hover { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); background: var(--pure-white); }
+        .img-grid { height: 200px; object-fit: cover; border-radius: 10px; width: 100%; margin-bottom: 15px; }
+        .price-tag { font-size: 2.5rem; font-weight: 800; color: var(--accent-blue); }
+        
+        .footer-info { background: var(--primary-blue); color: white; padding: 40px 0; }
 
-        /* COMPOSANTS */
-        .img-grid { height: 250px; object-fit: cover; border-radius: 15px; width: 100%; transition: var(--transition); }
-        .img-grid:hover { transform: scale(1.02); }
-        .service-card { border: none; transition: var(--transition); border-bottom: 5px solid var(--primary-blue); background: var(--light-gray); height: 100%; border-radius: 15px; }
-        .service-card:hover { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        
-        .social-sticky { position: fixed; top: 50%; left: 0; transform: translateY(-50%); z-index: 9999; }
-        .social-sticky a { width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; border-radius: 0 5px 5px 0; margin-bottom: 5px; }
-        .wa { background: #25d366; }
-        .fb { background: #3b5998; }
-        
-        footer { background: var(--primary-blue); color: white; padding: 50px 0; margin-top: 60px; }
+        .social-sticky {
+            position: fixed;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+        }
+        .social-sticky a {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 1.2rem;
+            margin-bottom: 2px;
+        }
+        .social-sticky .fb { background: #3b5998; }
+        .social-sticky .ln { background: #0077b5; }
+        .social-sticky .wa { background: #25d366; }
+        .social-sticky a:hover { width: 55px; padding-left: 10px; }
+
+        .social-links a {
+            transition: var(--transition);
+            display: inline-block;
+        }
+        .social-links a:hover {
+            transform: translateY(-5px);
+            color: var(--accent-blue) !important;
+        }
     </style>
 </head>
 <body>
@@ -73,11 +127,11 @@
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="#" onclick="showPage('home')">
-                <img src="imag/logo.jpeg" alt="Logo Shammah">
-                <div class="ms-2">
-                    <span class="d-block fw-bold" style="letter-spacing: 1px;">SHAMMAH</span>
-                    <span class="d-block small text-primary" style="font-size: 0.7rem;">ENTREPRISE SARLU</span>
+            <a class="navbar-brand fw-bold" href="#" onclick="showPage('home')" style="display: flex; align-items: center;">
+                <img src="imag/logo.jpeg" alt="Logo Shammah" style="height: 70px; width: auto; margin-right: 15px; object-fit: contain;">
+                <div style="line-height: 1.2;">
+                    <span style="color: var(--primary-blue); display: block; font-size: 1.2rem;">SHAMMAH</span>
+                    <span style="color: var(--accent-blue); display: block; font-size: 1rem;">ENTREPRISE</span>
                 </div>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -88,111 +142,196 @@
                     <li class="nav-item"><a class="nav-link active" href="#" onclick="showPage('home')">Accueil</a></li>
                     <li class="nav-item"><a class="nav-link" href="#" onclick="showPage('about')">À Propos</a></li>
                     <li class="nav-item"><a class="nav-link" href="#" onclick="showPage('services')">Services</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" onclick="showPage('contact')">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" onclick="showPage('expertise')">Expertise</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" onclick="showPage('tarifs')">Tarifs Forage</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" onclick="showPage('contact')">Contact & Devis</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- ACCUEIL -->
+    <!-- PAGE 01: ACCUEIL -->
     <div id="home" class="page-content active">
-        <div class="hero-section text-center">
+        <section class="hero-section text-center">
             <div class="container">
-                <h1 class="display-3 fw-bold mb-3">Forage & BTP en RDC</h1>
-                <p class="lead mb-4">L'expertise technique au service du développement durable.</p>
-                <button class="btn btn-light btn-lg px-5 rounded-pill fw-bold text-primary" onclick="showPage('contact')">DEVIS GRATUIT</button>
-            </div>
-        </div>
-        <div class="container mt-5">
-            <div class="row g-4">
-                <div class="col-md-4"><img src="imag/pois.jpeg" class="img-grid shadow"></div>
-                <div class="col-md-4"><img src="imag/aze.jpeg" class="img-grid shadow"></div>
-                <div class="col-md-4"><img src="imag/12.jpeg" class="img-grid shadow"></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- À PROPOS -->
-    <div id="about" class="container page-content">
-        <div class="row align-items-center g-5">
-            <div class="col-lg-6">
-                <h2 class="fw-bold mb-4 border-start border-4 border-primary ps-3">Qui sommes-nous ?</h2>
-                <p class="lead">Dirigée par l'<strong>Ir Christian</strong>, Shammah Entreprise SARLU est une société congolaise spécialisée dans les travaux de haute technicité.</p>
-                <p>Nous combinons innovation et respect des normes internationales pour garantir la pérennité de vos ouvrages de forage et de construction sur toute l'étendue de la RDC.</p>
-                <div class="row g-2 mt-4">
-                    <div class="col-6"><img src="imag/23211.jpeg" class="img-fluid rounded shadow-sm"></div>
-                    <div class="col-6"><img src="imag/555555.jpeg" class="img-fluid rounded shadow-sm"></div>
+                <h1 class="display-4 fw-bold mb-3">L'Excellence du BTP & Forage 100% Congolais</h1>
+                <p class="lead mb-5">Plus de 5 ans d'expérience terrain en RDC. Conformité normes OMS.</p>
+                <div class="d-flex gap-3 justify-content-end mt-4">
+                    <button class="btn btn-primary btn-lg px-4 rounded-pill" onclick="showPage('contact')">Demander un Devis</button>
+                    <button class="btn btn-outline-light btn-lg px-4 rounded-pill" onclick="showPage('services')">Nos Services</button>
                 </div>
             </div>
-            <div class="col-lg-6">
-                <img src="imag/777777.jpeg" class="img-fluid rounded-4 shadow-lg" alt="Équipe Shammah">
+        </section>
+
+        <div class="container my-5">
+            <div class="row g-4 text-center">
+                <div class="col-md-4">
+                    <i class="fas fa-award fa-3x mb-3" style="color: var(--accent-blue);"></i>
+                    <h4>+5 Ans d'Expérience</h4>
+                    <p>Une expertise prouvée dans les géologies variées de la RDC.</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="fas fa-check-double fa-3x mb-3" style="color: var(--accent-blue);"></i>
+                    <h4>Normes OMS</h4>
+                    <p>Garantie de potabilité et de sécurité sanitaire pour tous nos forages.</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="fas fa-tools fa-3x mb-3" style="color: var(--accent-blue);"></i>
+                    <h4>Parc Complet</h4>
+                    <p>Équipements modernes pour gérer plusieurs chantiers simultanément.</p>
+                </div>
+            </div>
+            
+            <div id="multiImageCarousel" class="carousel slide mt-5" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active" data-bs-interval="4000">
+                        <div class="row g-2">
+                            <div class="col-4"><img src="imag/pois.jpeg" class="img-fluid rounded shadow-sm" style="height: 200px; width: 100%; object-fit: cover;"></div>
+                            <div class="col-4"><img src="imag/aze.jpeg" class="img-fluid rounded shadow-sm" style="height: 200px; width: 100%; object-fit: cover;"></div>
+                            <div class="col-4"><img src="imag/arte.jpeg" class="img-fluid rounded shadow-sm" style="height: 200px; width: 100%; object-fit: cover;"></div>
+                        </div>
+                    </div>
+                    <div class="carousel-item" data-bs-interval="4000">
+                        <div class="row g-2">
+                            <div class="col-4"><img src="imag/121212121.jpeg" class="img-fluid rounded shadow-sm" style="height: 200px; width: 100%; object-fit: cover;"></div>
+                            <div class="col-4"><img src="imag/WhatsApp Image 2026-03-30 at 16.12.52.jpeg" class="img-fluid rounded shadow-sm" style="height: 200px; width: 100%; object-fit: cover;"></div>
+                            <div class="col-4"><img src="imag/4.jpeg" class="img-fluid rounded shadow-sm" style="height: 200px; width: 100%; object-fit: cover;"></div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#multiImageCarousel" data-bs-slide="prev" style="width: 5%; filter: invert(100%);">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#multiImageCarousel" data-bs-slide="next" style="width: 5%; filter: invert(100%);">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
             </div>
         </div>
     </div>
 
-    <!-- SERVICES -->
+    <!-- PAGE 02: À PROPOS -->
+    <div id="about" class="container page-content">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h2 class="fw-bold mb-4">Notre Identité</h2>
+                <p><strong>Shammah Entreprise SARLU</strong> est un acteur majeur du BTP et de l'hydraulique en RDC. Sous la direction de l'<strong>Ir Christian</strong>, nous transformons les défis techniques en solutions durables.</p>
+                <div class="bg-light p-4 rounded mb-4">
+                    <h5><i class="fas fa-bullseye me-2"></i> Mission & Vision</h5>
+                    <p>Apporter l'eau et des infrastructures de qualité aux communautés urbaines et rurales, tout en respectant les standards internationaux de sécurité.</p>
+                </div>
+                <div class="row g-2">
+                    <div class="col-6"><img src="imag/23211.jpeg" class="img-grid"></div>
+                    <div class="col-6"><img src="imag/555555.jpeg" class="img-grid"></div>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center">
+                <img src="imag/777777.jpeg" class="img-fluid rounded shadow" alt="Expertise">
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 03: SERVICES -->
     <div id="services" class="container page-content">
-        <h2 class="text-center fw-bold mb-5">Nos Domaines d'Expertise</h2>
+        <h2 class="text-center fw-bold mb-5">Nos Domaines d'Activité</h2>
         <div class="row g-4">
             <div class="col-md-4">
-                <div class="card service-card p-4 text-center">
-                    <div class="mb-3"><img src="imag/12.jpeg" class="rounded-3 w-100" style="height:180px; object-fit:cover;"></div>
-                    <h5 class="fw-bold">Forage Hydraulique</h5>
-                    <p class="small text-muted">Études géophysiques et captage d'eau potable aux normes OMS.</p>
+                <div class="card service-card p-4">
+                    <img src="imag/12.jpeg" class="img-grid mb-3">
+                    <h5>Forage d'eau potable</h5>
+                    <p class="small">Études hydrogéologiques, captage, protection de sources et mise en service.</p>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card service-card p-4 text-center">
-                    <div class="mb-3"><img src="imag/arte.jpeg" class="rounded-3 w-100" style="height:180px; object-fit:cover;"></div>
-                    <h5 class="fw-bold">Génie Civil & BTP</h5>
-                    <p class="small text-muted">Construction, rénovation et aménagement d'infrastructures durables.</p>
+                <div class="card service-card p-4">
+                    <img src="https://images.unsplash.com/photo-1517581177682-a085bb7ffb15?w=300" class="img-grid mb-3">
+                    <h5>Construction & Rénovation</h5>
+                    <p class="small">Ouvrages neufs (résidentiels, indutriels) et réhabilitation d'infrastructures.</p>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card service-card p-4 text-center">
-                    <div class="mb-3"><img src="imag/nb.jpeg" class="rounded-3 w-100" style="height:180px; object-fit:cover;"></div>
-                    <h5 class="fw-bold">Assainissement</h5>
-                    <p class="small text-muted">Systèmes de drainage et gestion moderne des eaux usées.</p>
+                <div class="card service-card p-4">
+                    <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=300" class="img-grid mb-3">
+                    <h5>Assainissement</h5>
+                    <p class="small">Drainage, gestion des eaux usées et aménagements sanitaires modernes.</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- CONTACT -->
+    <!-- PAGE 04: EXPERTISE -->
+    <div id="expertise" class="container page-content">
+        <div class="row">
+            <div class="col-lg-6">
+                <h3 class="fw-bold border-start border-5 border-primary ps-3 mb-4">Expertise Technique</h3>
+                <p>Équipes pluridisciplinaires, parc de machines complet et capacité d'intervention en milieu urbain et rural.</p>
+                <div class="row g-2">
+                    <div class="col-4"><img src="imag/nb.jpeg" class="img-grid"></div>
+                    <div class="col-4"><img src="imag/2.jpeg" class="img-grid"></div>
+                    <div class="col-4"><img src="imag/10.jpeg" class="img-grid"></div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <h3 class="fw-bold border-start border-5 border-primary ps-3 mb-4">Nos Marchés Cibles</h3>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><i class="fas fa-university me-2"></i> <strong>Secteur Public :</strong> Ministères, Écoles, Hôpitaux</li>
+                    <li class="list-group-item"><i class="fas fa-building-columns me-2"></i> <strong>Secteur Privé :</strong> Industries, Mines, Promoteurs</li>
+                    <li class="list-group-item"><i class="fas fa-users-viewfinder me-2"></i> <strong>Communautés :</strong> ONG, Particuliers, Associations</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 05: TARIFS -->
+    <div id="tarifs" class="container page-content text-center">
+        <h2 class="fw-bold mb-4">Transparence Tarifaire</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card p-5 shadow-lg border-0 bg-light">
+                    <h4>Forage Hydraulique</h4>
+                    <hr>
+                    <p class="mb-0 text-muted">À partir de</p>
+                    <div class="price-tag">150 $/m</div>
+                    <p class="small text-muted mt-3">*Note : Le tarif peut varier selon la géologie du sol. Contactez-nous pour un devis personnalisé.</p>
+                    <button class="btn btn-primary mt-4" onclick="showPage('contact')">Obtenir un Devis Gratuit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 06: CONTACT -->
     <div id="contact" class="container page-content">
         <div class="row g-5">
             <div class="col-md-5">
-                <h2 class="fw-bold mb-4">Contact direct</h2>
-                <div class="d-flex align-items-start mb-4">
-                    <i class="fab fa-whatsapp fa-2x text-success me-3"></i>
-                    <div>
-                        <h6 class="mb-0 fw-bold">WhatsApp & Appels</h6>
-                        <p>+243 816 800 968</p>
-                    </div>
-                </div>
-                <div class="d-flex align-items-start mb-4">
-                    <i class="fas fa-envelope fa-2x text-primary me-3"></i>
-                    <div>
-                        <h6 class="mb-0 fw-bold">Email</h6>
-                        <p>shammahsarlrdc@gmail.com</p>
-                    </div>
-                </div>
-                <div class="d-flex align-items-start mb-4">
-                    <i class="fas fa-map-marker-alt fa-2x text-danger me-3"></i>
-                    <div>
-                        <h6 class="mb-0 fw-bold">Adresse</h6>
-                        <p>Avenue NGUMA, n°16, Ngaliema, Kinshasa</p>
-                    </div>
+                <h2 class="fw-bold mb-4">Coordonnées</h2>
+                <p><i class="fas fa-map-marker-alt text-primary me-3"></i> Avenue NGUMA, n°16, Ngaliema, Kinshasa</p>
+                <p><i class="fab fa-whatsapp text-success me-3"></i> +243 816 800 968</p>
+                <p><i class="fas fa-envelope text-primary me-3"></i> shammahsarlrdc@gmail.com</p>
+                
+                <div class="mt-4">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15914.5085698357!2d15.2530182!3d-4.3411784!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1a6a310633b49911%3A0x67302f354f913d96!2sNgaliema%2C%20Kinshasa!5e0!3m2!1sfr!2scd!4v1711820000000!5m2!1sfr!2scd" 
+                        width="100%" height="300" style="border:0; border-radius: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" allowfullscreen="" loading="lazy">
+                    </iframe>
                 </div>
             </div>
+
             <div class="col-md-7">
-                <div class="card p-4 border-0 shadow-sm bg-light">
-                    <h4 class="fw-bold mb-4">Envoyez-nous un message</h4>
+                <div class="card p-4 shadow-sm border-0 bg-light">
+                    <h3 class="mb-4">Demande de Devis</h3>
                     <form>
                         <div class="row g-3">
                             <div class="col-md-6"><input type="text" class="form-control" placeholder="Votre Nom" required></div>
-                            <div class="col-md-6"><input type="tel" class="form-control" placeholder="Téléphone" required></div>
-                            <div class="col-12"><textarea class="form-control" rows="5" placeholder="Détails de votre projet..." required></textarea></div>
+                            <div class="col-md-6"><input type="tel" class="form-control" placeholder="Téléphone / WhatsApp" required></div>
+                            <div class="col-12">
+                                <select class="form-select">
+                                    <option selected disabled>Type de Projet</option>
+                                    <option>Forage d'eau</option>
+                                    <option>Construction / BTP</option>
+                                    <option>Assainissement</option>
+                                    <option>Gestion Immobilière</option>
+                                </select>
+                            </div>
+                            <div class="col-12"><textarea class="form-control" rows="5" placeholder="Description de votre projet..."></textarea></div>
                             <div class="col-12"><button type="submit" class="btn btn-primary w-100 py-3 fw-bold rounded-pill">ENVOYER LA DEMANDE</button></div>
                         </div>
                     </form>
@@ -203,15 +342,23 @@
 
     <!-- STICKY SOCIAL -->
     <div class="social-sticky">
-        <a href="https://wa.me/243816800968" class="wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
-        <a href="#" class="fb"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.facebook.com/votrepage" target="_blank" class="fb"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.linkedin.com/in/votreprofil" target="_blank" class="ln"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://wa.me/243816800968" target="_blank" class="wa"><i class="fab fa-whatsapp"></i></a>
     </div>
 
-    <footer>
-        <div class="container text-center">
-            <img src="imag/logo.jpeg" alt="Logo" style="height: 50px; margin-bottom: 20px; border-radius: 5px;">
-            <p class="mb-0">© 2026 Shammah Entreprise SARLU. Tous droits réservés.</p>
-            <p class="small text-white-50">Kinshasa, République Démocratique du Congo</p>
+    <footer class="footer-info mt-5 text-center">
+        <div class="container">
+            <h5 class="fw-bold mb-3">Shammah Entreprise SARLU</h5>
+            <p class="small mb-0">Siège : Avenue NGUMA n°16, Ngaliema, Kinshasa, RDC</p>
+            <p class="small mb-4">Acteur 100% Congolais au service du développement.</p>
+            <div class="social-links">
+                <a href="#" class="text-white mx-3 fs-3"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="text-white mx-3 fs-3"><i class="fab fa-linkedin"></i></a>
+                <a href="https://wa.me/243816800968" class="text-white mx-3 fs-3"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <hr class="my-4 opacity-25">
+            <p class="small">© 2026 Shammah Entreprise SARLU. Tous droits réservés.</p>
         </div>
     </footer>
 
@@ -219,22 +366,20 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         function showPage(pageId) {
-            // Mise à jour de l'affichage des sections
-            document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
+            const pages = document.querySelectorAll('.page-content');
+            pages.forEach(p => p.classList.remove('active'));
             document.getElementById(pageId).classList.add('active');
 
-            // Mise à jour du menu
-            document.querySelectorAll('.nav-link').forEach(l => {
-                l.classList.remove('active');
-                if(l.getAttribute('onclick').includes(pageId)) l.classList.add('active');
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if(link.getAttribute('onclick').includes(pageId)) link.classList.add('active');
             });
 
-            // Fermer le menu mobile automatiquement
             const navbarCollapse = document.getElementById('navbarNav');
             if (navbarCollapse.classList.contains('show')) {
                 new bootstrap.Collapse(navbarCollapse).hide();
             }
-
             window.scrollTo(0,0);
         }
     </script>
